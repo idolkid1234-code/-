@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>성우 & 애니메이션 이벤트 캘린더</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div class="hero__text">
+          <p class="hero__eyebrow">Japan Voice Actor & Anime Events</p>
+          <h1>일본 성우 · 애니메이션 이벤트 캘린더</h1>
+          <p class="hero__subtitle">
+            성우 팬미팅, 애니메이션 라이브, PV 공개 일정까지 한눈에
+            확인해보세요.
+          </p>
+        </div>
+        <div class="hero__meta">
+          <div class="meta-card">
+            <span class="meta-card__label">이번 달 예정</span>
+            <strong class="meta-card__value" id="event-count">0</strong>
+          </div>
+          <div class="meta-card">
+            <span class="meta-card__label">가장 가까운 이벤트</span>
+            <strong class="meta-card__value" id="next-event">-</strong>
+          </div>
+        </div>
+      </header>
+
+      <section class="toolbar">
+        <div class="toolbar__month">
+          <button class="ghost-button" id="prev-month" aria-label="이전 달">◀</button>
+          <h2 id="month-label">2026년 1월</h2>
+          <button class="ghost-button" id="next-month" aria-label="다음 달">▶</button>
+        </div>
+        <div class="toolbar__filters" role="group" aria-label="카테고리 필터">
+          <button class="filter-chip is-active" data-filter="all">전체</button>
+          <button class="filter-chip" data-filter="voice">성우 이벤트</button>
+          <button class="filter-chip" data-filter="anime">애니메이션</button>
+          <button class="filter-chip" data-filter="live">라이브/콘서트</button>
+          <button class="filter-chip" data-filter="release">신규 공개</button>
+          <button class="filter-chip" data-filter="korea">내한 이벤트</button>
+        </div>
+      </section>
+
+      <main class="content">
+        <section class="calendar">
+          <div class="calendar__header">
+            <span>일</span>
+            <span>월</span>
+            <span>화</span>
+            <span>수</span>
+            <span>목</span>
+            <span>금</span>
+            <span>토</span>
+          </div>
+          <div class="calendar__grid" id="calendar-grid"></div>
+        </section>
+
+        <aside class="events">
+          <div class="events__header">
+            <h3>이달의 이벤트</h3>
+            <p>선택한 카테고리 기준으로 정렬됩니다.</p>
+          </div>
+          <div class="events__list" id="events-list"></div>
+          <div class="events__note">
+            <strong>Tip</strong>
+            <p>
+              현재는 샘플 데이터로 구성되어 있어요. 실제 일정은 공식 채널을
+              확인해 주세요.
+            </p>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
