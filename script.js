@@ -1,63 +1,87 @@
 const events = [
   {
-    title: "사토미 사토 팬미팅 in 도쿄",
-    date: "2025-08-02",
-    category: "voice",
-    location: "도쿄 가든 시어터",
-  },
-  {
-    title: "애니메이션 '하늘빛 아리아' PV 공개",
-    date: "2025-08-05",
-    category: "release",
-    location: "유튜브 공식 채널",
-  },
-  {
-    title: "성우 유닛 라이브 'Echo Bloom'",
-    date: "2025-08-09",
-    category: "live",
-    location: "요코하마 아레나",
-  },
-  {
-    title: "극장판 '루미나스' 무대인사",
-    date: "2025-08-12",
+    title: "애니메이션 영화 시사회 '루미에르'",
+    date: "2026-01-03",
     category: "anime",
-    location: "신주쿠 피카딜리",
+    location: "도쿄 TOHO 시네마즈",
   },
   {
-    title: "호리에 유이 20주년 토크쇼",
-    date: "2025-08-16",
+    title: "팬클럽 새해 인사 이벤트",
+    date: "2026-01-05",
     category: "voice",
-    location: "아사쿠사 공회당",
+    location: "도쿄 국제포럼",
   },
   {
-    title: "애니메이션 OST 콘서트",
-    date: "2025-08-20",
+    title: "사진집 전달회 '빛의 기록'",
+    date: "2026-01-07",
+    category: "voice",
+    location: "아키하바라 이벤트 홀",
+  },
+  {
+    title: "러브라이브! 스페셜 라이브 2026",
+    date: "2026-01-11",
     category: "live",
-    location: "오사카성 홀",
+    location: "사이타마 슈퍼 아레나",
   },
   {
-    title: "새 시즌 제작 발표 라이브",
-    date: "2025-08-22",
+    title: "아이돌마스터 올스타즈 프로듀서 미팅",
+    date: "2026-01-14",
+    category: "live",
+    location: "니혼 무도칸",
+  },
+  {
+    title: "우마무스메 4th 스테이지 라이브",
+    date: "2026-01-18",
+    category: "live",
+    location: "교세라 돔 오사카",
+  },
+  {
+    title: "애니메이션 영화 '폴라리스' 무대인사",
+    date: "2026-01-21",
+    category: "anime",
+    location: "오사카 스테이션 시티 시네마",
+  },
+  {
+    title: "PV 공개: 애니메이션 '메모리 크로니클'",
+    date: "2026-01-23",
+    category: "release",
+    location: "공식 유튜브 채널",
+  },
+  {
+    title: "Koe 주최 애니송 스페셜 내한 이벤트",
+    date: "2026-01-25",
+    category: "korea",
+    location: "서울 올림픽홀",
+  },
+  {
+    title: "Say U Fans 성우 토크 내한",
+    date: "2026-01-27",
+    category: "korea",
+    location: "부산 영화의전당",
+  },
+  {
+    title: "한국 팬미팅 투어 in 서울",
+    date: "2026-01-31",
+    category: "korea",
+    location: "서울 예스24 라이브홀",
+  },
+  {
+    title: "애니메이션 '솔라리아' 제작발표 라이브",
+    date: "2026-02-02",
     category: "anime",
     location: "니코니코 생방송",
   },
   {
-    title: "라디오 공개녹음 with 시마자키 노부나가",
-    date: "2025-08-24",
-    category: "voice",
-    location: "나고야 시민회관",
+    title: "애니메이션 영화 내한 무대인사",
+    date: "2026-02-05",
+    category: "korea",
+    location: "서울 CGV 용산아이파크몰",
   },
   {
-    title: "OVA '라이트 세이버' 선행 공개",
-    date: "2025-08-28",
-    category: "release",
-    location: "아키하바라 극장",
-  },
-  {
-    title: "애니메이션 이벤트 Summer Stage",
-    date: "2025-08-30",
-    category: "anime",
-    location: "마쿠하리 멧세",
+    title: "애니송 라이브 in 서울",
+    date: "2026-02-07",
+    category: "korea",
+    location: "서울 코엑스 오디토리움",
   },
 ];
 
@@ -68,7 +92,7 @@ const eventCount = document.getElementById("event-count");
 const nextEvent = document.getElementById("next-event");
 const filterButtons = document.querySelectorAll(".filter-chip");
 
-let currentMonth = new Date(2025, 7, 1);
+let currentMonth = new Date(2026, 0, 1);
 let activeFilter = "all";
 
 const categoryLabels = {
@@ -76,6 +100,7 @@ const categoryLabels = {
   anime: "애니메이션",
   live: "라이브",
   release: "공개",
+  korea: "내한",
 };
 
 const formatDate = (date) =>
@@ -139,10 +164,12 @@ const renderCalendar = () => {
 
 const filteredEvents = () => {
   const month = currentMonth.getMonth();
+  const year = currentMonth.getFullYear();
   return events
     .filter((eventItem) => {
       const eventDate = new Date(eventItem.date);
-      const isSameMonth = eventDate.getMonth() === month;
+      const isSameMonth =
+        eventDate.getMonth() === month && eventDate.getFullYear() === year;
       const matchesFilter =
         activeFilter === "all" || eventItem.category === activeFilter;
       return isSameMonth && matchesFilter;
